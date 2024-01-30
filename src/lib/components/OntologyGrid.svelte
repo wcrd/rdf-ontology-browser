@@ -40,14 +40,14 @@
             // checkboxSelection: true,
             // headerCheckboxSelection: true,
             // headerCheckboxSelectionFilteredOnly: true
-            rowDrag: true,
+            rowDrag: false,
         },
         defaultColDef: {
             sortable: true,
             flex: 1,
             resizable: true
         },
-        rowSelection:'multiple',
+        rowSelection:false,
         rowData: null,
         groupSelectsChildren: true,
         onCellClicked: onCellClicked,
