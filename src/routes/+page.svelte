@@ -2,8 +2,11 @@
     import OntologyGrid from "$lib/components/OntologyGrid.svelte";
     import { setGridQuickFilter } from "$lib/js/common-grid.js"
 
+
     let ontology_filter_input
     import { ontologyAPI } from '$lib/stores/store-ontology-grid.js'
+
+    import { selected_class_data } from '$lib/stores/store-detail-manager.js'
 
         // move into common grid ops module
     function collapseRows(api) {
@@ -13,6 +16,8 @@
     function expandRows(api) {
         api.expandAll();
     }
+
+    
 </script>
 
 <div class="h-screen w-screen flex flex-col">
@@ -34,7 +39,11 @@
                 <OntologyGrid bind:gridOptions={$ontologyAPI} />
             </div>
         </div>
-        <div id="detail-area"></div>
+        <div id="detail-area" class="w-3/4 h-full">
+            <div>
+                <p>{$selected_class_data?.uri}</p>
+            </div>
+        </div>
     </div>
 
 </div>

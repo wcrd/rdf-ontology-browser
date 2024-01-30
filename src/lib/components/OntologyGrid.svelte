@@ -6,6 +6,7 @@
 
     import { ontologyData, ontologyAPI } from '$lib/stores/store-ontology-grid.js'
     import { classValueRenderer, addGridDropZone } from '$lib/js/common-grid.js'
+    import { selected_class_data } from "$lib/stores/store-detail-manager.js"
 
     // import { createEventDispatcher } from 'svelte'
     // const dispatch = createEventDispatcher()
@@ -46,11 +47,20 @@
         rowSelection:'multiple',
         rowData: null,
         groupSelectsChildren: true,
+        onCellClicked: onCellClicked,
         context: {
             gridName: "ontology"
         }
     };
 
+
+    // on selection send event
+    function onCellClicked(event) {
+      const clickedNode = event?.data;
+    //   dispatch("clicked-node", clickedNode);
+        $selected_class_data = clickedNode
+        console.debug("Clicked: ", $selected_class_data)
+    };
 
 </script>
 
