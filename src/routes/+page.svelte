@@ -7,6 +7,7 @@
     import { ontologyAPI } from '$lib/stores/store-ontology-grid.js'
 
     import { selected_class_data } from '$lib/stores/store-detail-manager.js'
+    import DetailArea from '$lib/components/DetailArea.svelte'
 
         // move into common grid ops module
     function collapseRows(api) {
@@ -40,9 +41,7 @@
             </div>
         </div>
         <div id="detail-area" class="w-3/4 h-full">
-            <div>
-                <p>{$selected_class_data?.uri}</p>
-            </div>
+            <DetailArea />
         </div>
     </div>
 

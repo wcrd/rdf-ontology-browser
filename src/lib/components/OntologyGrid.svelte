@@ -18,16 +18,19 @@
     export const gridOptions = {
         treeData: true,
         getDataPath: (data) => {
-            if (data.path.full[0] == "https://brickschema.org/schema/Brick#Class"){
-                return data.path.full.slice(1)
-            }
-            else {
-                return null
-            }
+            // if (data.path.full[0] == "https://brickschema.org/schema/Brick#Class"){
+            //     return data.path.full.slice(1)
+            // }
+            // else {
+            //     return null
+            // }
+            return data.path.full
         },
         autoGroupColumnDef: {
-            headerName: "Class",
+            headerName: "Object",
             sortable: true,
+            comparator: (valueA, valueB, nodeA, nodeB, isDescending) => {return nodeA?.data?.term > nodeB?.data?.term ? 1 : -1 },
+            sort: 'asc',
             cellRendererParams: {
                 suppressCount: true,
                 innerRenderer: classValueRenderer
@@ -59,11 +62,11 @@
       const clickedNode = event?.data;
     //   dispatch("clicked-node", clickedNode);
         $selected_class_data = clickedNode
-        console.debug("Clicked: ", $selected_class_data)
+        // console.debug("Clicked: ", $selected_class_data)
     };
 
 </script>
 
-<div id="modelOntologyGrid" class="ag-theme-alpine h-full w-full">
+<div id="ontologyGrid" class="ag-theme-alpine h-full w-full">
     <AgGridSvelte bind:rowData={$ontologyData} {onGridReady} {gridOptions}/>
 </div>
